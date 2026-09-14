@@ -101,6 +101,7 @@ async def process_tz(message: Message, state: FSMContext):
         # Если будет ошибка (например, неверный токен или ID), скрипт не упадет, а просто выведет текст в консоль
         print(f"Ошибка при отправке уведомления админу: {e}")
 
+    # 2. Очищаем состояние в самом конце. Теперь эта строчка выполнится 100%!
     await state.clear()
 
 
@@ -114,6 +115,7 @@ async def command_start_handler(message: Message):
     await message.answer("Привет! Это бот-помощник для автоматизации заявок. "
                          "Мы можем сразу создать заказ и потом я вам отпишу в ЛС.\n"
                          "По срочным вопросам писать сразу сюда: @tecamm ", reply_markup= main_menu_buttons())
+
 
 
 @router.message(Command('help'))
