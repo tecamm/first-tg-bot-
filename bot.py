@@ -1,4 +1,3 @@
-from idlelib.undo import Command
 from os import getenv
 import asyncio
 from aiogram import *
