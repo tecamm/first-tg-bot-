@@ -96,12 +96,11 @@ async def process_tz(message: Message, state: FSMContext):
 
     try:
         # Обязательно используем message.bot.send_message
-        await message.bot.send_message(chat_id=getenv('ADMIN_ID'), text=admin_text, parse_mode='HTML')
+        await message.bot.send_message(chat_id=int(getenv('ADMIN_ID')), text=admin_text, parse_mode='HTML')
     except Exception as e:
         # Если будет ошибка (например, неверный токен или ID), скрипт не упадет, а просто выведет текст в консоль
         print(f"Ошибка при отправке уведомления админу: {e}")
 
-    # 2. Очищаем состояние в самом конце. Теперь эта строчка выполнится 100%!
     await state.clear()
 
 
