@@ -1,4 +1,6 @@
 .env
-.venv
-db.py
+__pycache__/
+*.pyc
+.idea/
 orders.db
+.venv
