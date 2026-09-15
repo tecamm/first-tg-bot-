@@ -5,6 +5,10 @@ from aiogram.types import Message
 from dotenv import load_dotenv
 from handlers.routes import router
 import db
+from defs.middlewares import BanMiddleware, ThrottlingMiddleware
+
+
+
 
 load_dotenv()
 
@@ -20,6 +24,8 @@ async def main():
     db.create_table()
     await dp.start_polling(bot)
 
+dp.update.middleware(BanMiddleware())
+dp.message.middleware(ThrottlingMiddleware(time_limit=2))
 
 if __name__ == "__main__":
     asyncio.run(main())
